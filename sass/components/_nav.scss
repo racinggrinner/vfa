@@ -1,0 +1,218 @@
+/*------------------------------------*\
+    $NAVIGATION
+\*------------------------------------*/
+
+// Global nav styles
+$nav-font-family:       $font-family-sans-serif;
+$nav-font-size:         $font-size-base;
+$nav-text-transform:    uppercase;
+$nav-letter-spacing:    1px;
+
+@include keyframes(dash-in) {
+  from {
+    @include transform(rotate(0deg));
+    @include opacity(0);
+  }
+
+  to {
+    @include transform(rotate(90deg));
+    @include opacity(1);
+  }
+}
+
+@include keyframes(dash-out) {
+  from {
+    @include transform(rotate(90deg));
+    @include opacity(0);
+  }
+  to {
+    @include transform(rotate(0));
+    @include opacity(1);
+  }
+}
+
+.nav {
+  @include clearfix;
+  font-family: $nav-font-family;
+  font-size: $nav-font-size;
+  letter-spacing: $nav-letter-spacing;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Global navigation item
+.nav__item {
+  a {
+    @extend %no-select;
+  }
+}
+
+.nav__section-heading {
+  color: white;
+  margin-top: 0;
+}
+
+// Primary navigation (articles, themes, packages)
+.nav--primary {
+  width: 100%;
+
+  // Item style for primary nav
+  > .nav__item {
+    text-transform: $nav-text-transform;
+    padding: 0 $padding-half;
+    background-color: $charcoal;
+
+    > span {
+      color: $gray;
+      display: block;
+      padding: $padding-half 0;
+      cursor: pointer;
+
+      &:before {
+        @include respond-to(tablet) {
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: shade($charcoal, 50%);
+    }
+
+    &.item--active,
+    &.item--active:hover {
+      background-color: shade($charcoal, 50%);
+
+      > span {
+        color: $gray;
+      }
+    }
+  }
+
+  @include respond-to(tablet-and-up) {
+    display: table;
+    table-layout: fixed;
+
+    > .nav__item {
+      padding: 0;
+      display: table-cell;
+      background-color: transparent;
+
+      > span {
+        color: $charcoal-light;
+        text-align: center;
+      }
+
+      &:hover {
+        background-color: tint($charcoal-light, 90%);
+      }
+
+      &.item--active,
+      &.item--active:hover {
+        background-color: $charcoal;
+      }
+    }
+  }
+}
+
+// Subnavigation of item in primary navigation
+.nav--secondary {
+  @include clearfix;
+  @include opacity(0);
+  line-height: $line-height-small;
+  @include transition(opacity .35s ease-in-out, visibility 0 1s linear);
+  max-height: 0;
+  margin: 0 auto;
+  visibility: hidden;
+  //border-bottom-style: solid;
+  //border-bottom-width: 2px;
+  //border-bottom-color: $charcoal-dark;
+
+  @include respond-to(tablet-and-up) {
+    background-color: $charcoal;
+    @include transition(opacity .35s ease-in-out, visibility 0 1s linear);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+
+  .nav__item {
+    font-family: $font-family-serif;
+    letter-spacing: 0;
+    text-transform: none;
+    display: block;
+    color: $gray-light;
+    margin-bottom: $padding-half;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  > .nav-grid__single-section > .nav__item {
+    @include respond-to(tablet) {
+      @include span(6 of 12 0.5);
+
+      &:nth-child(even) {
+        @include span(6 of 12 0.5 last);
+      }
+    }
+
+    @include respond-to(desktop-and-up) {
+      @include span(3 of 12 0.5);
+
+      &:nth-child(4n) {
+        @include span(3 of 12 0.5 last);
+      }
+    }
+  }
+
+  // Open state - this would unfold the Secondary navigation
+  &.nav--open {
+    @include opacity(1);
+    max-height: 2000px;
+    visibility: visible;
+  }
+}
+
+// Subnavigation grid
+ @include respond-to(tablet-and-up) {
+  .nav-grid {
+    @include container(1180px);
+    @include clearfix;
+  }
+}
+
+// Subnavigation grid section
+.nav-grid__section {
+  @include span(1 of 1 no-gutter);
+  margin-bottom: 1.5em;
+  padding-top: $padding-base;
+  padding-bottom: $padding-base;
+
+  @include respond-to(tablet) {
+    @include span(6 of 12 0.5);
+
+    &:nth-child(even) {
+      @include span(6 of 12 0.5 last);
+    }
+  }
+
+  @include respond-to(desktop-and-up) {
+    @include span(3 of 12 0.5);
+    //min-height: 320px;
+
+    &:nth-child(4n) {
+      @include span(3 of 12 0.5 last);
+    }
+  }
+}
+
+.nav-grid__single-section {
+  @include span(12 of 12 0.5);
+  padding-top: $padding-base;
+  padding-bottom: $padding-base;
+}

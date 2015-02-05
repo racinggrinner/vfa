@@ -1,0 +1,216 @@
+/*------------------------------------*\
+  $VARIABLES
+\*------------------------------------*/
+
+// Colors --------------------------- //
+$white:      #ffffff;
+$black:      #000000;
+
+$gray:       #E3E3E3;
+$gray-light: #F3F3F3;
+$gray-dark:  #D1D1D1;
+
+// Positive - Blue
+$positive:                #4377E5;
+$positive-light:          #4CA2DF;
+$positive-dark:           #3866CD;
+
+// Energized - Yellow
+$energized:               #FFDE47;
+$energized-light:         #FFFA2E;
+$energized-dark:          #E4BF2C;
+
+// Assertive - Red
+$assertive:               #FC6C66;
+$assertive-light:         #FE9664;
+$assertive-dark:          #E95C58;
+
+// Balanced - Green
+$balanced:                #03CAA5;
+$balanced-light:          #07EDA2;
+$balanced-dark:           #03B694;
+
+// Charcoal - Dark Gray
+$charcoal:                #383838;
+$charcoal-light:          #5D5D5D;
+$charcoal-dark:           $black;
+
+// Stable - Light Gray
+$stable:                  $gray;
+$stable-light:            $gray-light;
+$stable-dark:             $gray-dark;
+
+$dim:                     rgba(0,0,0,0.5);
+
+$color-error:             $assertive;
+$color-valid:             $balanced;
+$color-warn:              $energized;
+$color-info:              $positive;
+
+// Global Styles -------------------- //
+$body-bg:                 $white;
+$text-color:              $charcoal;
+
+$link-color:              $positive;
+$link-hover-color:        darken($link-color, 15%);
+
+// Font Families -------------------- //
+$font-family-sans-serif:  			"montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif-bold:  	"montserratbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       			"merriweatherregular", Georgia, "Times New Roman", Times, serif;
+$font-family-serif-italic:      "merriweatheritalic", Georgia, "Times New Roman", Times, serif;
+$font-family-serif-bold:      	"merriweatherbold", Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   			Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-slab-serif:  			"kontrapunktboblight", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$font-family-slab-serif-bold:  	"kontrapunktbobbold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$font-family-base:        			$font-family-serif;
+
+// Font Sizes ----------------------- //
+$font-size-base:          16px;
+$font-size-large:         ceil(($font-size-base * 1.25)); // ~20px;
+$font-size-medium:        ceil(($font-size-base * 1.125)); // ~18px;
+$font-size-small:         ceil(($font-size-base * 0.875)); // ~14px;
+$font-size-xsmall:        ceil(($font-size-base * 0.75)); // ~12px;
+
+// Heading Sizes -------------------- //
+$font-size-h1:            ceil(($font-size-base * 2.6)); // ~42px
+$font-size-h2:            floor(($font-size-base * 2.15)); // ~34px
+$font-size-h3:            ceil(($font-size-base * 1.7)); // ~28px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~20px
+$font-size-h5:            $font-size-base; // ~16px
+$font-size-h6:            ceil(($font-size-base * 0.85)); // ~14px
+
+// Line Heights --------------------- //
+$line-height-base:        1.5;
+$line-height-computed:    floor(($font-size-base * $line-height-base)); // ~24px
+
+$line-height-large:       floor(($font-size-base * 2.25)); // ~36px;
+$line-height-medium:      floor(($font-size-base * 2)); // ~32px;
+$line-height-small:       floor(($font-size-base * 1.75)); // ~28px;
+
+// Headings ------------------------ //
+$headings-font-family:    $font-family-slab-serif;
+//$headings-font-weight:    300;
+$headings-line-height:    $line-height-base;
+$headings-color:          inherit;
+
+// Subheadings -------------------- //
+$subheadings-font-family: $font-family-sans-serif-bold;
+//$subheadings-font-weight: 500;
+$subheadings-line-height: 1.2;
+$subheadings-color:       inherit;
+
+// Paddings ----------------------- //
+$padding-base:            20px;
+$padding-and-half:        $padding-base * 1.5;
+$padding-double:          $padding-base * 2;
+$padding-three-quarters:  $padding-base / 1.5;
+$padding-half:            $padding-base / 2;
+$padding-quarter:         $padding-base / 4;
+
+// Border Radii ------------------- //
+$border-radius-base:      4px;
+$border-radius-small:     2px;
+$border-radius-large:     6px;
+
+// Color List (buttons, etc.) ----- //
+$color-list: (
+//Name            Primary         Text                					Active
+  'positive'      $positive       $white              					$positive-dark,
+  'energized'     $energized      darken($energized-dark, 40%)  $energized-dark,
+  'assertive'     $assertive      $white              					$assertive-dark,
+  'balanced'      $balanced       $white              					$balanced-dark,
+  'charcoal'      $charcoal       $white              					$charcoal-dark,
+  'stable'        $stable         $charcoal-light     					$stable-dark,
+  'white'         $white          $charcoal-light     					$gray-light
+);
+
+//
+// Legacy IE support
+//
+// These variables are used by many mixins to add additional CSS to support
+// specific versions of IE or specific vendor prefixes.
+//
+// IE6-7 don't support box-sizing: border-box. We can fix this in 1 of 3 ways:
+// - Drop support for IE 6/7. :-) Set $legacy-support-for-ie6
+//   and $legacy-support-for-ie7 to false.
+// - (Preferred) Install the box-sizing polyfill and set the variable below to
+//   the absolute path URL to the boxsizing.htc file.
+//   @see https://github.com/Schepp/box-sizing-polyfill
+//   $box-sizing-polyfill-path: "/path/to/boxsizing.htc";
+// - Use the same CSS unit for grid and gutter width in resonsive-sidebars.scss
+//   (use px for both or use % for both) and set the box-sizing variable to content-box.
+//
+// Zen does not require special handling for IE8 or later. But Compass uses that
+// variable for a couple edge cases. We include it for completeness sake. See
+// the documentation at http://compass-style.org/reference/compass/support/
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: true;
+
+//
+// Font faces, stacks and sizes.
+//
+
+// Compass' vertical_rhythm extension is a powerful tool to set up a vertical
+// rhythm for your entire page. You can see some of its mixins and functions in
+// use in the normalize.scss file.
+// @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
+
+$base-font-size:   $font-size-base; // The font size set on the root html element.
+$base-line-height: $line-height-computed; // This line-height determines the basic unit of vertical rhythm.
+
+$h1-font-size: $font-size-h1;
+$h2-font-size: $font-size-h2;
+$h3-font-size: $font-size-h3;
+$h4-font-size: $font-size-h4;
+$h5-font-size: $font-size-h5;
+$h6-font-size: $font-size-h6;
+
+// The following font family declarations are based on the Microsoft core web
+// fonts which are common fonts available on most computer systems. The DejaVu
+// and Nimbus Sans fonts are commonly available on Linux systems where the MS
+// fonts are less common. Tahoma and Helvetica are also widely available.
+//
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// First, let's create some font stacks.
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+// Now create some variables for the font stacks we want to use on this site.
+$base-font-family: $font-family-base; // The font family set on the html element.
+$font-body:        $font-family-base;
+$font-monospace:   $courier;
+
+//
+// Colors, etc.
+//
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 30px;
+
+// The height of the navigation container.
+$nav-height: 3em;
+
+// Tab styling.
+$tabs-container-bg: #fff;
+$tabs-border: #bbb;
+
+// Feature image offset 
+$offset: 10%;
+

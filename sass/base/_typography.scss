@@ -1,0 +1,106 @@
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+
+/* Headings */
+h1, .alpha,
+h2, .beta,
+h3, .gamma {
+  @extend %heading;
+}
+
+/* Sub Headings */
+h4, .delta,
+h5, .epsilon,
+h6, .zeta,
+.subheading {
+  @extend %sub-heading;
+}
+
+/* Links */
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $link-hover-color;
+  }
+}
+
+p {
+  line-height: $line-height-large;
+  margin: 0;
+  margin-bottom: $padding-base;
+
+  strong {
+    font-weight: normal;
+    font-family: $font-family-serif-bold;
+  }
+
+  i {
+    font-style: normal;
+    font-family: $font-family-serif-italic;
+  }
+}
+
+.lead {
+  font-size: $font-size-medium;
+  line-height: $line-height-medium;
+}
+
+/* Blockquote */
+blockquote {
+  position: relative;
+  font-family: $font-family-slab-serif-bold;
+  font-weight: normal;
+  font-size: $font-size-large;
+  color: $charcoal;
+  border-left: 4px solid $stable;
+  padding: $padding-base $padding-base;
+  margin: $padding-base auto;
+
+  > p {
+    line-height: 1.5em;
+    margin-top: $padding-base; /* Reverse the default margin direction to enable use of cross browser friendly first-child */
+    margin-bottom: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  q {
+    font-style: normal;
+    quotes: '"' '"';
+  }
+}
+
+cite, .citation {
+  font-family: $font-family-slab-serif;
+  font-size: $font-size-base;
+  font-style: normal;
+  &:before {
+    content: "— ";
+  }
+}
+
+/* Horizontal Rule */
+hr {
+  border: 0;
+  height: 2px;
+  background: $gray;
+  margin: $padding-double 0;
+}
+
+abbr {
+  border-bottom: 1px dotted $gray;
+  cursor: help;
+}
+
+q {
+  font-style: italic;
+  quotes: '»' '«' '“' '”';
+
+  &:before { content: open-quote; }
+  &:after  { content: close-quote; }
+}

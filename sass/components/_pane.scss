@@ -1,0 +1,37 @@
+/*------------------------------------*\
+    $PANE
+\*------------------------------------*/
+
+.pane-views-panes {}
+
+.panel-pane__inner {
+  @include clearfix;
+  position: relative;
+  padding: $padding-half 0;
+  margin-top: $padding-double;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: lighten($charcoal, 40%);
+}
+
+.pane-title {
+  @include span(10 of 12 no-gutter);
+  margin-top: 0;
+}
+
+/** 
+ * Style the title based on the slats--variant-3 pane context. 
+ *
+ */
+.panel-pane {
+  &.slats--variant-3 {
+    .pane-title {
+      @include respond-to(desktop-and-up) {
+        @include span(2 of 12 no-gutter);
+        position: absolute;
+        top: $padding-half;
+        left: 0;
+      }
+    }
+  }
+}

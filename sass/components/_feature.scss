@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    $FEATURE
+\*------------------------------------*/
+
+.feature {
+  overflow: hidden;
+}
+
+.feature--image {
+	@include respond-to(tablet-and-up) {
+		.node--package & {
+			margin-top: -($offset);
+		}
+	}
+
+  > img {
+    width: 100%;
+  }
+}

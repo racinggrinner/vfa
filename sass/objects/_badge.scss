@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  $BADGE
+\*------------------------------------*/
+.badge {
+  @extend %sub-heading;
+  display: inline-block;
+  padding: .5em .625em;
+  margin-right: .625em;
+  font-size: .875em;
+  line-height: 1;
+  text-transform: uppercase;
+
+  background-color: white;
+  color: #000000;
+}
+
+@each $name, $back-color, $text-color, $dark-color in $color-list {
+  .badge--#{$name} {
+    background-color: #{$back-color};
+    color: #{$text-color};
+  }
+}

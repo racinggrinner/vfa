@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    $LISTS
+\*------------------------------------*/
+ol, ul {
+  line-height: $line-height-large;
+}
+
+/* Definition Lists */
+dl {
+  overflow: hidden;
+  margin: 0 0 $padding-half;
+  line-height: $line-height-large;
+}
+
+dt {
+	font-family: $font-family-serif-bold;
+}
+
+dd {
+  margin-left: 0;
+}

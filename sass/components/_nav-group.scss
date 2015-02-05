@@ -1,0 +1,33 @@
+/*------------------------------------*\
+  $NAV-GROUP
+\*------------------------------------*/
+.nav-group {
+  @include respond-to(mobile) {
+    @include clearfix;
+    width: 100%;
+    visibility: visible;
+
+    @include transform-origin(top, left);
+    @include transform(scaleY(1));
+    @include opacity(1);
+
+    height: auto;
+
+    @include transition(visibility 0 .2s linear,
+                        height .1s .2s linear,
+                        transform .2s ease-in-out,
+                        opacity .1s ease-in-out);
+  }
+}
+
+.nav-group__section {
+  @include respond-to(tablet-and-up) {
+    &:nth-child(odd) {
+      @include span(6 of 12 before first);
+    }
+
+    &:nth-child(even) {
+      @include span(6 of 12 before last);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.site-content {
+  margin: 0 auto $padding-double;
+}
+
+.container {
+  @include container;
+  padding-left: $padding-base;
+  padding-right: $padding-base;
+  @include clearfix;
+}
+
+@include respond-to(tablet-and-up) {
+  .container {
+    @include container($susy-tablet);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@include respond-to(desktop-and-up) {
+  .container {
+    @include container($susy-desktop);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+[class*='layout-'] {
+  @include clearfix;
+}
+
+@for $col from 1 through 12 {
+
+  .col-#{$col} {
+    @include span(12 of 12);
+    $color: ($col * (360*64)) / (256 * 3);
+
+    @include respond-to(tablet-and-up) {
+      @include span($col of 12);
+    }
+
+    &.col-last {
+      @include span(12 of 12 last);
+      @include respond-to(tablet-and-up) {
+        @include span($col of 12 last);
+      }
+    }
+  }
+}
+
+@for $push from 1 through 12 {
+  .push-#{$push} {
+    @include respond-to(tablet-and-up) {
+      @include push($push of 12);
+    }
+  }
+}

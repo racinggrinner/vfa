@@ -1,0 +1,38 @@
+/*------------------------------------*\
+  $OVERRIDES
+\*------------------------------------*/
+.flag-bookmarks {
+
+  > .flag:before {
+    @extend %icon;
+    content: "\e606";
+  }
+
+  > .flag.flagged:before {
+    content: "\e605";
+  }
+}
+
+.flag-message {
+  display: block;
+  position: static;
+  left: auto;
+  top: auto;
+  width: auto;
+  background-color: white;
+  padding: $padding-quarter 0;
+  font-size: 0.9em;
+}
+
+.flag-waiting .flag-throbber {
+  display: inline-block;
+  height: 32px;
+  background: url('../images/spinner-mini.gif') no-repeat right center;
+  padding-right: 17px;
+}
+
+.page-user {
+  .site-content {
+    @include container;
+  }
+}

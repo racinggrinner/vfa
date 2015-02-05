@@ -1,0 +1,199 @@
+/*------------------------------------*\
+  $BUTTONS
+\*------------------------------------*/
+
+.btn {
+  @extend %no-select;
+
+  position: relative;
+  display:  inline-block;
+  overflow: hidden;
+
+  font-style:   normal;
+  font-variant: normal;
+
+  font-family: $font-family-slab-serif-bold;
+  font-size:   $font-size-base;
+
+  border: none;
+
+  margin-bottom:  0;
+  text-align:     center;
+  vertical-align: middle;
+  cursor:         pointer;
+  white-space:    nowrap;
+  padding:        $padding-half ($padding-half * 1.5);
+  line-height:    $line-height-base;
+  border-radius:  $border-radius-base;
+
+  @include transition(background .1s linear,
+                      color .1s linear,
+                      border .1s linear);
+  @include font-smoothing();
+  @include user-select(none);
+
+  &:after {
+    @include transition(background .1s linear,
+                        color .1s linear,
+                        border .1s linear);
+  }
+
+  &,
+  &:active,
+  &.active {
+    &:focus {
+      @include tab-focus();
+    }
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active {
+    outline: 0;
+    padding: {
+      bottom: ($padding-half - 1);
+      top:    ($padding-half + 1);
+    }
+
+    &:after {
+      padding-top: $padding-half + 1;
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor:         not-allowed;
+    pointer-events: none;
+    @include opacity(.65);
+    @include box-shadow(none);
+  }
+}
+
+.btn--action {
+  padding-right: ($padding-half * 1.5) * 4;
+  &:after {
+    display:     block;
+    position:    absolute;
+    right:       0;
+    top:         0;
+    bottom:      0;
+    width:       40px;
+    padding:     $padding-half 0;
+    text-align:  center;
+    content:     ">";
+    font-weight: normal;
+    line-height: 1;
+  }
+}
+
+.btn--default.btn--action {
+  &:after {
+    background-color: $black;
+    line-height:      1.5;
+    box-shadow:       inset 0px -2px 0px 0px rgba(0,0,0,0.10);
+  }
+}
+
+.btn--hollow.btn--action {
+  &:after {
+    top:         $padding-quarter;
+    bottom:      $padding-quarter;
+    border-left: 1px solid $black;
+  }
+}
+
+.btn--default {
+  box-shadow: inset 0px -2px 0px 0px rgba(0,0,0,0.10);
+
+  &:active {
+    box-shadow: inset 0px 2px 0px 0px rgba(0,0,0,0.10);
+    &:after {
+      box-shadow: inset 0px 2px 0px 0px rgba(0,0,0,0.10);
+    }
+  }
+}
+
+.btn--hollow {
+  background: none;
+  color:      $positive;
+  border:     2px solid $positive;
+}
+
+// Make a button look and behave like a link
+.btn--link {
+  color: $link-color;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  background: 0 0;
+  padding: 0;
+  vertical-align: baseline;
+
+  &:active,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+    padding: 0;
+  }
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+}
+
+@each $name, $back-color, $text-color, $dark-color in $color-list {
+
+  $hover-color:      lighten($back-color, 5%);
+  $hover-dark-color: lighten($dark-color, 5%);
+
+  .btn--default.btn--#{$name} {
+    color:            $text-color;
+    background-color: $back-color;
+
+    &.btn--action {
+      &:after {
+        background-color: $dark-color;
+      }
+    }
+
+    &:hover {
+      background-color: $hover-color;
+      &:after {
+        background-color: $hover-dark-color;
+      }
+    }
+  }
+
+  .btn--hollow.btn--#{$name} {
+    color:        $back-color;
+    border-color: $back-color;
+
+    &.btn--action {
+      &:after {
+        border-color: transparentize($back-color, .7);
+      }
+    }
+
+    &:hover {
+      color:        $hover-color;
+      border-color: $hover-color;
+    }
+  }
+}
+
+// TODO (tg) make global solution
+//.btn--default.btn--energized {
+  //color: darken($energized-dark, 50%);
+//}

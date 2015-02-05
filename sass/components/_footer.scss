@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    $FOOTER
+\*------------------------------------*/
+
+.footer--site {
+  padding: base-em(20px);
+  background-color: $charcoal;
+
+  @include respond-to(tablet-and-up) {
+    padding: base-em(40px) 0 base-em(109px);
+  }
+}
+
+.footer--site__logo {
+  float: right;
+}

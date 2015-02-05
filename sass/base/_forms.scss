@@ -1,0 +1,124 @@
+/*------------------------------------*\
+  $FORMS
+\*------------------------------------*/
+form ol, form ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  display: block;
+  font-weight: normal;
+  font-family: $font-family-serif-bold;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+input, textarea {
+  width: 100%;
+  border: 1px solid $stable;
+  padding: $padding-half;
+}
+
+input[type=text], input[type=search], input[type=url], input[type=number], textarea {
+  -webkit-appearance: none;
+}
+
+button, input[type="submit"] {
+  width: auto;
+  padding: $padding-half;
+  background: $stable;
+  border: 1px solid $stable;
+  cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: 0.3em;
+}
+
+input[type="search"] {
+  @include box-sizing(border-box);
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+//Form Field Container
+.field-container {
+  margin-bottom: $padding-base;
+}
+
+.inline-form {
+  fieldset, .inline-container {
+    position: relative;
+  }
+
+  input[type=submit], button, .btn {
+    font-size: $font-size-small;
+    padding: 0.65rem 1.3rem;
+    background: $gray-light;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: auto;
+
+    &:hover, &:focus {
+      background: $gray;
+      color: $white;
+    }
+  }
+}
+
+.form__item,
+.form-item { // Drupal default
+  margin-top: 0;
+  margin-bottom: $padding-half;
+}
+
+.form-actions {
+  margin-top: $padding-half;
+  margin-bottom: 0;
+}
+
+.description, // Drupal default
+.form__help {
+  margin-top: 2px;
+}
+
+/**
+ * Form - Start your free trial
+ *
+ */
+.form--start-your-free-trial {
+  input[type="text"],
+  input[type="email"] {
+    padding: base-em(12px) $padding-half;
+    background-color: darken($positive, 30%);
+    color: lighten($positive, 30%);
+    border-color: darken($positive, 40%);
+
+    @include input-placeholder {
+      color: lighten($positive, 30%);
+    }
+  }
+
+  input[type=submit] {
+    margin-top: base-em(23px);
+  }
+}

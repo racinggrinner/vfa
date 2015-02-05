@@ -1,0 +1,80 @@
+/*------------------------------------*\
+    $BOTTOM BAR
+\*------------------------------------*/
+.bottom-bar {
+	border-top: 1px solid darken($positive-dark, 30%);
+	background: $positive-dark url('../images/bg-people-waiting-scene.png') center bottom no-repeat;
+	color: $white;
+
+	a {
+		color: $white;
+		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			color: $white;
+		}
+	}
+
+	@include respond-to(tablet-and-up) {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 2;
+	}
+}
+
+.bottom-bar__content {
+	padding: 0 $padding-base;
+	@include clearfix;
+
+	@include respond-to(tablet-and-up) {
+		padding: 0;
+	}
+}
+
+/**
+ * Gradient Transition Trick - http://codersblock.com/blog/gradient-animation-trick/
+ *
+ * 1. Establish background gradient
+ * 2. Shift background gradient position
+ */
+.bottom-bar__header {
+	cursor: pointer;
+	@include background-image(linear-gradient(rgba(46,90,188,0.8), rgba(56,102,205,0.3) 50%, rgba(56,102,205,0.3) 50%, transparent)); /* [2] */
+	background-size: auto 200%;
+	background-position: 0 100%;
+	@include single-transition(none);
+
+	&:hover {
+		background-position: 0 0; /* [2] */
+		@include single-transition(background-position, 0.05s, ease-in-out);
+	}
+}
+
+.bottom-bar__title {
+	position: relative;
+	padding: 0 ($padding-base * 3) 0 $padding-base;
+
+	@include respond-to(tablet-and-up) {
+		@include span(12 of 12);
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:after {
+		content: map-get($icons, arrow-down);
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 54px;
+	}
+}
+
+.bottom-bar__body {
+	display: block;
+	@include clearfix;
+}

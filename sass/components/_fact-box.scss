@@ -1,0 +1,69 @@
+/*------------------------------------*\
+    $FACT BOX
+\*------------------------------------*/
+
+.fact-box {
+	background-color: $stable;
+	width: 100%;
+	padding: $padding-base;
+	margin-bottom: $padding-base;
+
+	> h2, 
+	>	h3, 
+	>	h4 {
+		margin-top: 0;
+		margin-bottom: $padding-half;
+	}
+
+	> p {
+		margin-bottom: $padding-half;
+	}
+
+	> ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		> li {
+			border-top: 1px solid rgba(0, 0, 0, 0.2);
+			padding: $padding-half 0;
+			margin: 0;
+			line-height: 1.5;
+
+			&:first-of-type {
+				border-top: none;
+			}
+
+			> cite {
+			  font-family: $font-family-slab-serif;
+			  font-size: $font-size-base;
+			  font-style: normal;
+
+			  &:before {
+			    content: "— ";
+			  }
+			}
+		} 
+	}
+
+  &.pull--right {
+    float: right;
+    margin-left: $padding-base * 2;
+  }
+
+  &.pull--left {
+  	float: left;
+    margin-right: $padding-base * 2;
+  }
+
+  &.pull--right,
+  &.pull--left {
+	  @include respond-to(desktop-and-up) {
+	    width: 35%;
+	  }
+
+		@include respond-to(tablet) {
+	    width: 50%;
+	  }
+  }
+}

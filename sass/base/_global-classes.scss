@@ -1,0 +1,76 @@
+/*------------------------------------*\
+  $GLOBAL CLASSES
+\*------------------------------------*/
+
+.cf {
+  @include clearfix;
+}
+
+/* Completely remove from the flow and screen readers. */
+.is-hidden {
+   display: none !important;
+   visibility: hidden !important;
+}
+
+/* Floats */
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+/* Text-Align */
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
+
+// Useful caret
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+// Screen reader only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Hide content depending on the breakpoint
+@include respond-to(tablet-and-down) {
+  .hidden-tablet-and-down {
+    display: none;
+  }
+}
+
+@include respond-to(tablet-and-up) {
+  .hidden-tablet-and-up {
+    display: none;
+  }
+}

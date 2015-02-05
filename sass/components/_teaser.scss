@@ -1,0 +1,115 @@
+/*------------------------------------*\
+    $TEASER
+\*------------------------------------*/
+
+.teaser {
+  position: relative;
+  @include clearfix;
+
+  > a {
+    display: block;
+    color: $text-color;
+
+    &:hover {
+      .node__title {
+        text-decoration: underline;
+      }
+    }
+
+    &:hover {
+      .teaser__title {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.has-arrow {
+    > a {
+      @include clearfix;
+      padding: $padding-half $padding-three-quarters 0 0;
+      
+      &:after {
+        @extend %icon;
+        position: absolute;
+        right: -($padding-base);
+        top: 0;
+        content: "\e603";
+        font-size: 45px;
+      }
+    }
+  }
+
+  &.has-media.has-arrow {
+    > a {
+      &:after {
+        top: 33%;
+      }
+    }
+  }
+}
+
+.teaser__media {
+  @include respond-to(mobile) {
+    @include image-50;
+  }
+
+  @include respond-to(tablet-and-up) {
+    @include image-33;
+  }
+
+  @include respond-to(tablet-and-up) {
+    .slats--variant-3 & {
+      width: 100%;
+      float: none;
+      margin: 0;
+    }
+  }
+}
+
+.teaser__title {
+  line-height: $subheadings-line-height;
+  margin-top: -4px;
+  margin-bottom: $padding-three-quarters;
+
+  .view--wide & {
+    margin-top: 0;
+  }
+}
+
+.teaser__meta {
+  float: left;
+  line-height: $subheadings-line-height;
+  display: block;
+  margin: 0 7px 0 0;
+
+  /**
+   * Position the meta area:
+   *
+   * [1] When the teaser has media
+   * [2] Within the slats--variant-3
+   *
+   */
+  .has-media & { // [1]
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    > a {
+      display: block;
+    }
+  }
+
+  .has-arrow & {
+    top: $padding-half;
+  }
+
+  .slats--variant-3 & { // [2]
+    float: none;
+    margin: 0 0 $padding-half 0;
+  }
+}
+
+.teaser__body {
+  font-size: $font-size-small;
+  line-height: $line-height-computed;
+}

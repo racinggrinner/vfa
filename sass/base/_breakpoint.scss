@@ -1,0 +1,46 @@
+$bp-mobile: 660px;
+$bp-tablet: 940px;
+$bp-desktop: 1400px;
+
+@mixin respond-to( $media ) {
+    @if $media == mobile {
+        @include breakpoint(max-width $bp-mobile) { @content; }
+    }
+    @else if $media == tablet {
+        @include breakpoint((min-width $bp-mobile + 1) (max-width $bp-tablet - 1)) { @content; }
+    }
+    @else if $media == desktop {
+        @include breakpoint((min-width $bp-tablet + 1) (max-width $bp-desktop - 1)) { @content; }
+    }
+    @else if $media == wide {
+        @include breakpoint(min-width $bp-desktop) { @content; }
+    }
+
+    // If inside of view, or smaller views
+    @else if $media == mobile-and-down {
+        @include breakpoint(max-width $bp-mobile) { @content; }
+    }
+    @else if $media == tablet-and-down {
+        @include breakpoint(max-width ($bp-tablet - 1)) { @content; }
+    }
+    @else if $media == desktop-and-down {
+        @include breakpoint(max-width ($bp-desktop - 1)) { @content; }
+    }
+    @else if $media == wide-and-down {
+        @include breakpoint(min-width 0) { @content; }
+    }
+
+    // If inside of a view, or wider views
+    @else if $media == mobile-and-up {
+        @include breakpoint(min-width 0) { @content; }
+    }
+    @else if $media == tablet-and-up {
+        @include breakpoint(min-width $bp-mobile) { @content; }
+    }
+    @else if $media == desktop-and-up {
+        @include breakpoint(min-width $bp-tablet) { @content; }
+    }
+    @else if $media == wide-and-up {
+        @include breakpoint(min-width $bp-desktop) { @content; }
+    }
+}

@@ -1,0 +1,28 @@
+/*------------------------------------*\
+  $BLOCK
+\*------------------------------------*/
+.block {
+  color: $white;
+  line-height: $line-height-base;
+}
+
+.block__heading {
+  font-size: $font-size-h4;
+  font-weight: bold;
+  padding: 0;
+  margin: 0 0 $padding-base 0;
+}
+
+.block__body {
+  background-color: $balanced;
+  padding: $padding-base;
+}
+
+.block__footer {
+  padding: $padding-base;
+  background-color: $balanced-dark;
+}
+
+.block--center {
+  margin: 0 auto;
+}

@@ -1,0 +1,194 @@
+/*------------------------------------*\
+    $SLATS
+\*------------------------------------*/
+
+/* NOTE: Slats are the site view class for lists of stuff. See: http://pea.rs/content/slats-html5 */
+
+/** 
+ * Handy mixin for slats border.
+ * TODO (tg) This could be made global if useful for components other than slats.
+ *
+ */
+@mixin border-top-slats {
+  padding-top: $padding-half;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: $gray;
+}
+
+@mixin remove-border-top-slats {
+  padding-top: 0;
+  border-top-style: none;
+  border-top-width: 0;
+  border-top-color: transparent;
+}
+
+/** 
+ * Global slats styles
+ *
+ */
+.slats {
+  > .more-link {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+}
+
+.slats__content {
+
+  > ul {
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+      list-style: none;
+      @include border-top-slats;
+    }
+  }
+}
+
+/** 
+ * Slats Variants
+ *
+ * [1]
+ * The site approach to adding slats variant classes is far from ideal. 
+ * Ideally the classes would belong at the same level as the slats component 
+ * eg: <div class="slats slats--variant-1">
+ * 
+ * However our solution is forced to follow this markup structure:
+ *
+ * <div class="panel-pane slats--variant-1">
+ *  <h5 class="pane-title">Pane/slats Title</h5>
+ *    <div class="slats">
+ *
+ * We have arrived here as a compromise due to the fact that when we:
+ * a) render a view pane Drupal moves the view title outside of the view 
+ * component and renders it as a pane title within the pane component. 
+ * b) need to have the site building ability to add the slats display 
+ * modifing class to the panel-pane via the admin interface.
+ *
+ * [2]
+ * A desciption of which slats variant class renders which slats display has been 
+ * added to the github wiki for this site: 
+ * http://gitlab.peytz.dk/drupal-sites/mit-arbejdsmiljo/wikis/site-slats-display
+ *
+ */
+.slats {
+  /** 
+   * Variant 1
+   *
+   * Description of default desktop display: This slats variant features multiples of 6
+   * list items displayed vertically 3 per row.
+   */
+  .slats--variant-1 & {
+
+    .slats__content {
+      > ul {
+        > li {
+
+          @include respond-to(tablet) {
+            &:nth-child(odd) {
+              @include span(6 of 12 before first);
+              clear: both;
+            }
+
+            &:nth-child(even) {
+              @include span(6 of 12 before last);
+            }
+          }
+
+          @include respond-to(desktop-and-up) {
+            @include span(4 of 12 before);
+
+            &:nth-child(3n+1) {
+              @include span(4 of 12 before first);
+              clear: both;
+            }
+
+            &:nth-child(3n+3) {
+              @include span(4 of 12 before last);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /** 
+   * Variant 2
+   *
+   * Description of default desktop display: 
+   * This slats variant features even numbers of list items displayed vertically 2 per row.
+   */
+  .slats--variant-2 & {
+
+    .slats__content {
+      > ul {
+        > li {
+          @include respond-to(tablet-and-up) {
+            &:nth-child(odd) {
+              @include span(6 of 12 before first);
+              clear: both;
+            }
+
+            &:nth-child(even) {
+              @include span(6 of 12 before last);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /** 
+   * Variant 3
+
+   * Description of default desktop display: This slats variant features 4 list items 
+   * displayed from left to right with the slats (pane-title) title prefixed  
+   * visually inline with the list items.
+   */
+  .slats--variant-3 & {
+
+    .slats__content {
+      > ul {
+        > li {
+          @include respond-to(tablet) {
+            @include span(3 of 12 before);
+
+            &:nth-child(4n+1) {
+              @include span(3 of 12 before first);
+            }
+
+            &:nth-child(4n+4) {
+              @include span(3 of 12 before last);
+            }
+          }
+
+          @include respond-to(tablet-and-up) {
+            @include remove-border-top-slats;
+          }
+
+          @include respond-to(desktop-and-up) {
+            @include span(2 of 8);
+
+            &:nth-child(4n+4) {
+              @include span(2 of 8 last);
+            }
+          }
+        }
+
+        @include respond-to(desktop-and-up) {
+          @include span(9 of 12);
+          @include push(2 of 12);
+          @include post(1 of 12);
+        }
+      }
+    }
+  }
+}

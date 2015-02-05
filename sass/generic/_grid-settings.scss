@@ -1,0 +1,24 @@
+/*------------------------------------*\
+    $GRID SETTINGS
+\*------------------------------------*/
+
+$susy-mobile:  6;
+$susy-tablet:  8;
+$susy-desktop: 12;
+
+$susy: (
+  columns: $susy-mobile,
+  container: 1200px,
+  math: magic,
+  output: float,
+  gutter-position: inside,
+  global-box-sizing: content-box,
+  debug: (
+    image: hide,
+    color: rgba(#bada55, .50),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+$rem-with-px-fallback: true;

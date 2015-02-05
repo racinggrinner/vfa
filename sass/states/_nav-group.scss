@@ -1,0 +1,12 @@
+/*------------------------------------*\
+  $STATE NAV-GROUP STATES
+\*------------------------------------*/
+.nav-group--is-closed {
+  @include respond-to(mobile) {
+    visibility: hidden;
+    height: 0;
+
+    @include transform(scaleY(0));
+    @include opacity(0);
+  }
+}

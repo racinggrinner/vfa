@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+
+html {
+  @include box-sizing(border-box);
+  -webkit-text-size-adjust: 100%;
+  }
+
+  *, *:before, *:after {
+  @include box-sizing(inherit);
+  }
+
+body {
+  font: {
+    family: $font-family-base;
+    size: $font-size-base;
+  };
+  line-height: $line-height-base;
+  color: $text-color;
+  background: $body-bg;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  @include font-smoothing();
+}
+
+// Create space for the fixed bottom bar
+@include respond-to(tablet-and-up) {
+  .main {
+    padding-bottom: base-em(100px);
+  }
+}

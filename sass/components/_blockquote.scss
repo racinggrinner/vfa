@@ -1,0 +1,59 @@
+.blockquote--pull {
+  border: 0;
+  background-color: $stable;
+
+  @include respond-to(tablet-and-up) {
+    max-width: 35%;
+  }
+
+  &:after {
+    position: absolute;
+    top: 20px;
+    display: block;
+    background: transparent;
+    content: "";
+    width: 20px;
+    height: 20px;
+  }
+
+  &.pull--right,
+  &.pull--left {
+    //width: 360px;
+  }
+
+  &.pull--right {
+    float: right;
+    margin-left: $padding-base * 2;
+
+    &:after {
+      left: -20px;
+      border: {
+        left: 20px solid transparent;
+        bottom: 20px solid $stable;
+      }
+    }
+  }
+
+  &.pull--left {
+    float: left;
+    margin-right: $padding-base * 2;
+
+    &:after {
+      right: -20px;
+      border: {
+        right: 20px solid transparent;
+        bottom: 20px solid $stable;
+      }
+    }
+  }
+}
+
+.blockquote--pull.stable {
+  background-color: $stable;
+
+  &.pull--left {
+    &:after {
+      border-bottom-color: $stable;
+    }
+  }
+}

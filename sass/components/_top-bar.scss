@@ -1,0 +1,98 @@
+/*------------------------------------*\
+    $TOP BAR
+\*------------------------------------*/
+
+.top-bar {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: $gray-light;
+	overflow: visible;
+
+	> .container {
+		position: relative;
+		overflow: visible;
+	}
+}
+
+.top-bar__header {
+	@include clearfix;
+
+	> div {
+		@include span(6 of 12); // We want 2 columns mobile first
+		> p {
+			margin: base-em(7px) 0;
+			font-size: base-em(14px);
+		}
+
+		> a {
+			font-family: $font-family-base;
+			text-decoration: underline;
+		}
+	}
+}
+
+.top-bar__button {
+	font-family: $font-family-base;
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0 -1px 0 4px;
+	background-color: transparent;
+	padding: 8px 12px 7px;
+	color: $charcoal;
+
+	&:hover,
+  &:focus {
+  	color: $charcoal;
+		outline: 0;
+		padding: 8px 12px 7px;
+	}
+
+	&:active:focus {
+		outline: 0;
+	}
+
+	&:hover {
+  	background-color: $gray-light;
+  }
+}
+
+.top-bar__toggle {
+	margin: 0 -1px 0 10px;
+	padding: 5px 6px 6px 12px;
+
+  &:hover,
+  &:focus {
+  	padding: 5px 6px 6px 12px;
+  }
+
+	&:after {
+		content: '\e603';
+		font-size: 1.2em;
+		top: .225em;
+	}
+
+	&.top-bar__toggle--is-active {
+		background-color: $gray-light;
+		@include box-shadow(rgba(0,0,0,0.3) 0 9px 9px 0px);
+
+		&:after {
+			content: '\e600';
+		}
+	}
+}
+
+.top-bar__body {
+	@include clearfix;
+	background-color: $gray-light;
+	width: 100%;
+	position: absolute;
+	top: 36px;
+	right: gutter(12);
+	z-index: 1;
+	padding: $padding-base;
+	@include box-shadow(rgba(0,0,0,0.3) 0 9px 14px 0px);
+
+	@include respond-to(tablet-and-up) {
+		width: 30%;
+	}
+}

@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    $BRAND
+\*------------------------------------*/
+
+.brand {
+  width: 280px;
+  height: 44px;
+
+  @include respond-to(desktop-and-up) {
+  	width: 380px;
+  	height: 60px;
+  }
+}
+
+.brand__color {
+  fill: $energized;
+
+  //a:hover & {
+  	//fill: darken($energized, 15%);
+  //}
+}
+
+.brand__color-secondary {
+
+}
+
+.brand__color-tertiary {
+  fill: lighten($energized, 15%);
+
+  //a:hover & {
+  	//fill: $energized;
+  //}
+}

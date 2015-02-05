@@ -1,0 +1,10 @@
+/**
+ * @file
+ *
+ * Admin specific styles for this layout.
+ */
+
+.page-admin .col-8 {
+  width: 80%;
+  margin: 0 auto;
+}

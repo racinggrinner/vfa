@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  $STATE BOTTOM-BAR STATES
+\*------------------------------------*/
+.bottom-bar--is-closed {
+
+  .bottom-bar__header {
+    background-position: 0 0;
+  }
+
+  .bottom-bar__title {
+    //margin: $padding-half 0;
+
+    &:after {
+      content: map-get($icons, arrow-right);
+    }
+  }
+
+  .bottom-bar__body {
+    display: none;
+  }
+
+}

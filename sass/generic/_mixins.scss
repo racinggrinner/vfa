@@ -1,0 +1,89 @@
+// @file
+// Custom sass mixins
+//
+// Define the custom mixins for your project here.
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
+
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    clip: rect(1px 1px 1px 1px); // IE6 and IE7 use the wrong syntax.
+  }
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+// Makes an element visually hidden by default, but visible when focused.
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}
+
+// Sets font-smoothing
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+// Sets tab-focus (from Bootstrap)
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Function to convert px to em values on the fly
+// http://thesassway.com/intermediate/responsive-web-design-part-1
+@function calc-em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+@function base-em($target-px) {
+  @return calc-em($target-px, $base-font-size);
+}
+
+// Handy mixins to float images
+@mixin image-50 {
+  float: left;
+  width: (100%/2);
+  margin: 0 $padding-half $padding-half 0;
+
+  @include respond-to(tablet-and-up) {
+    margin: 0 $padding-three-quarters $padding-three-quarters 0;
+  }
+}
+
+@mixin image-33 {
+  float: left;
+  width: (100%/3);
+  margin: 0 $padding-half $padding-half 0;
+
+  @include respond-to(tablet-and-up) {
+    margin: 0 $padding-three-quarters $padding-three-quarters 0;
+  }
+}

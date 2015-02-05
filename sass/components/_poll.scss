@@ -1,0 +1,33 @@
+.poll {
+
+}
+
+.poll__choices {}
+
+.poll__choices .form-item-choice,
+.poll__choices .choices__item {
+  margin-bottom: $padding-base;
+
+  &:last-child {
+    margin-bottom: $padding-quarter;
+  }
+}
+
+.poll__choices .choices__item.item--selected {
+  padding: $padding-half $padding-base;
+  color: $white;
+  background-color: rgba(0, 0, 0, .08);
+  margin-left: -$padding-base;
+  margin-right: -$padding-base;
+  font-weight: bold;
+}
+
+.poll__title {
+  margin-bottom: $padding-quarter;
+}
+
+.poll__text {
+  margin-top: $padding-quarter;
+  font-size: $font-size-small;
+  font-family: $font-family-sans-serif;
+}

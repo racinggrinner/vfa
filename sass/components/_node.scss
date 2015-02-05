@@ -1,0 +1,36 @@
+/*------------------------------------*\
+    $NODE
+\*------------------------------------*/
+
+.node {
+  @include clearfix;
+
+  // Theme & Package Nodes
+  .container:first-of-type {
+    overflow: visible;
+    @include respond-to(mobile) {
+      background-color: shade($charcoal, 50%);
+    }
+  }
+}
+
+/**
+ * Node variant - Article
+ *
+ */
+.node--article {
+
+  .node__meta {
+    margin-bottom: $padding-and-half;
+
+    @include respond-to(tablet-and-up) {
+      @include span(3 of 12);
+    }
+  }
+
+  .node__body {
+    @include respond-to(tablet-and-up) {
+      @include span(9 of 12);
+    }
+  }
+}

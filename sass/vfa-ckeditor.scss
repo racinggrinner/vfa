@@ -1,0 +1,69 @@
+/*------------------------------------*\
+    $TABLE OF CONTENTS
+\*------------------------------------*/
+
+/*------------------------------------*\
+    $FRAMEWORKS
+\*------------------------------------*/
+@import "compass",
+        "compass/support",
+        "compass/utilities/general/clearfix",
+        "compass/css3",
+        "compass/typography/vertical_rhythm";
+@import "breakpoint";
+
+/*------------------------------------*\
+    $GENERIC
+\*------------------------------------*/
+@import "generic/webfonts",
+        "generic/variables",
+        "generic/mixins",
+        "generic/extends";
+@import "normalize";
+@import "misc";
+
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+@import "base/lists",
+        "base/lists",
+        "base/tables",
+        "base/typography";
+
+/*------------------------------------*\
+    $COMPONENTS
+\*------------------------------------*/
+@import "components/blockquote";
+@import "components/fact-box";
+
+*, *:before, *:after {
+  @include box-sizing(inherit);
+}
+
+/** 
+ * CKEditor
+ *
+ * Target body of the CKeditor
+ */
+.cke_show_borders {
+  font: {
+    family: $font-family-base;
+    size: $font-size-base;
+  };
+  line-height: 36px;
+  color: $text-color;
+  background: $body-bg;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  @include font-smoothing();
+  max-width: 740px;
+  
+  video {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+.cke_editable img {
+  width: 100%;
+}

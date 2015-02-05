@@ -1,0 +1,49 @@
+/*------------------------------------*\
+    $SEARCHBAR
+\*------------------------------------*/
+.search-bar {
+  position: relative;
+  display: table;
+  padding: 0 $padding-half;
+  background-color: $charcoal;
+  border-bottom: 1px solid $charcoal-light;
+  width: 100%;
+
+  @include respond-to(tablet-and-up) {
+    background-color: transparent;
+    padding: $padding-base;
+    padding: 0;
+    border: none;
+  }
+}
+
+.search-bar__input {
+  display: table-cell;
+  vertical-align: middle;
+  color: $white;
+  padding: $padding-base $padding-half;
+  background-color: transparent;
+  border: none;
+  @include appearance(none);
+
+  @include respond-to(tablet-and-up) {
+    color: $charcoal;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.search-bar__label {
+    display: table-cell;
+    vertical-align: middle;
+    width: 1em;
+    margin: 0;
+    padding: $padding-half;
+    color: lighten($charcoal-light, 20%);
+
+    @include respond-to(tablet-and-up) {
+      color: lighten($charcoal-light, 30%);
+    }
+  }

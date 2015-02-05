@@ -1,0 +1,37 @@
+/*------------------------------------*\
+  $LABEL
+\*------------------------------------*/
+.label {
+  display: inline;
+  padding: 4px 7px;
+  font-size: $font-size-xsmall;
+  font-family: $font-family-sans-serif-bold;
+  line-height: 1;
+  color: $charcoal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: $gray;
+
+  &:hover {
+    background-color: darken($gray, 10%);
+    color: $charcoal;
+  }
+}
+
+@each $name, $back-color, $text-color, $dark-color in $color-list {
+  .label--#{$name} {
+    background-color: #{$back-color};
+    color: #{$text-color};
+
+    &:hover {
+      background-color: #{darken($back-color, 10%)};
+    }
+  }
+
+  a.label--#{$name} {
+    &:hover {
+      color: #{$text-color};
+    }
+  }
+}

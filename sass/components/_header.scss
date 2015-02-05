@@ -1,0 +1,132 @@
+/*------------------------------------*\
+  $HEADER
+\*------------------------------------*/
+
+/**
+ * Header - Site
+ *
+ */
+.header--site {
+  padding: base-em(10px) 0 base-em(5px);
+
+  margin: 0 0 -$padding-base;
+
+  @include respond-to(tablet-and-up) {
+    padding-top: base-em(25px);
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .header__body {
+    @include clearfix;
+    @include respond-to(tablet-and-up) {
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-color: $gray;
+    }
+  }
+}
+
+@include respond-to(tablet-and-up) {
+  .header__section {
+    //@include span(6 of 12 no-gutter);
+    @include clearfix;
+  }
+}
+
+.header__logo {
+  display: block;
+  padding-left: base-em(10px);
+
+  @include respond-to(desktop-and-up) {
+    padding-left: 0;
+  }
+}
+
+/**
+ * Header - Node (eg: Article)
+ *
+ */
+.header--node {
+  @include respond-to(tablet-and-up) {
+    @include span(12 of 12);
+  }
+
+  > .lead {
+    margin-bottom: $padding-base;
+  }
+
+  > .feature {
+    margin-bottom: $padding-and-half;
+
+    > picture {
+      display: block;
+      line-height: 0;
+
+      > img {
+        vertical-align: bottom;
+      }
+    }
+  }
+}
+
+/**
+ * Header - Node Wide (eg: Package/Theme)
+ *
+ */
+.header--node-wide {
+  background-color: shade($charcoal, 50%);
+
+  .header__body {
+    padding-top: $padding-and-half;
+    padding-bottom: $padding-and-half;
+    position: relative; 
+
+    @include respond-to(tablet-and-up) {
+      .has-media & {
+        padding-bottom: $offset;
+      }
+    }
+
+    > span {
+      font-family: $font-family-sans-serif;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    > span,
+    > h1,
+    > .lead {
+      color: $white;
+    }
+
+    > h1 {
+      margin-top: 0;
+      font-family: $font-family-slab-serif-bold;
+      
+      &:before {
+        @extend %icon;
+        font-size: 46px;
+
+        .node--package & {
+          content: "\e60e";
+        }
+
+        .node--theme & {
+          content: "\e60d";
+        }
+
+        @include respond-to(tablet-and-up) {
+          position: absolute;
+          top: 30px;
+          left: -(span(1 of 12 no-gutter));
+        }
+
+        @include respond-to(desktop-and-up) {
+          font-size: 75px;
+        }
+      }
+    }
+  }
+}

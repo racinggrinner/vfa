@@ -1,0 +1,89 @@
+/*------------------------------------*\
+    $TOGGLE
+\*------------------------------------*/
+
+// Toggable options
+$toggle-hit-area:      44px !default; // hit area for toggle button
+$toggle-icon-size:     32px !default; // size of toggle button icon
+$toggle-color:         rgba(0, 0, 0, .5) !default; // color of button icon
+$toggle-background:    transparent !default; // background color of button
+
+/**
+ * Toggable placeholder
+ */
+%toggable {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 1;
+  width: $toggle-hit-area;
+  height: $toggle-hit-area;
+  color: $toggle-color;
+  font-size: $toggle-icon-size;
+  cursor: pointer;
+  text-align: center;
+
+  @extend %no-select;
+
+  &:hover {
+    color: $toggle-color;
+  }
+
+  @include respond-to(tablet-and-up) {
+    display: none;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    visibility: hidden;
+    color: $toggle-background;
+  }
+}
+
+.toggables {
+  @include clearfix;
+}
+
+/**
+ * Nav toggle button
+ */
+.toggle--nav {
+  @extend %toggable;
+
+  @include animation(dash-out 0.2s linear normal);
+  animation-fill-mode: forwards;
+
+  &:after {
+    content: map-get($icons, menu);
+    font-size: $toggle-icon-size;
+    width: 1em;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -($toggle-icon-size / 2);
+    margin-left: -($toggle-icon-size / 2);
+
+    @include respond-to(tablet-and-up) {
+      content: normal;
+      content: none;
+    }
+  }
+
+  &.nav-btn--active {
+    @include animation(dash-in 0.2s linear normal);
+    animation-fill-mode: forwards;
+
+    &:after {
+      content: map-get($icons, cross);
+    }
+  }
+}
+
+/**
+ * Search toggle button
+ */
+.toggle--search {
+  @extend %toggable;
+}
